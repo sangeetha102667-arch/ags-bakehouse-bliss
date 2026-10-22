@@ -1,0 +1,108 @@
+#Order {
+  width: 100%;
+  min-height: 100vh;
+  padding: 70px 0;
+  background: #f8f8f8;
+}
+
+#Order .title-text {
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+#Order .title-text p {
+  margin: auto;
+  font-size: 30px;
+  color: #FF1493;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+#Order .title-text p::after {
+  content: '';
+  width: 50px;
+  height: 35px;
+  background: linear-gradient(#FF69B4, #fff);
+  position: absolute;
+  top: -20px;
+  left: 0;
+  z-index: -1;
+  transform: rotate(10deg);
+  border-top-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+}
+
+#Order .title-text h1 {
+  font-size: 50px;
+}
+
+#Order .order-card {
+  max-width: 600px;
+  width: 90%;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+#Order header {
+  background: #FF1493;
+  color: #fff;
+  padding: 16px;
+  text-align: center;
+}
+
+#Order form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+#Order label {
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+#Order input,
+#Order select,
+#Order textarea {
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+#Order input:focus,
+#Order select:focus,
+#Order textarea:focus {
+  outline: none;
+  border-color: #FF1493;
+}
+
+#Order button {
+  margin-top: 22px;
+  padding: 12px;
+  background: #FF1493;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#Order button:hover {
+  background: #d6336c;
+}
+
+@media screen and (max-width: 770px) {
+  #Order .title-text h1 {
+    font-size: 28px;
+  }
+}

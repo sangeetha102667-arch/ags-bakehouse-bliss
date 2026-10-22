@@ -1,0 +1,96 @@
+#Contact {
+  width: 100%;
+  min-height: 100vh;
+  padding: 108px 0 20px;
+  background: #efefef;
+}
+
+#Contact .title-text {
+  text-align: center;
+  padding-bottom: 70px;
+}
+
+#Contact .title-text p {
+  margin: auto;
+  font-size: 30px;
+  color: #FF1493;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+#Contact .title-text p::after {
+  content: '';
+  width: 50px;
+  height: 35px;
+  background: linear-gradient(#FF69B4, #fff);
+  position: absolute;
+  top: -20px;
+  left: 0;
+  z-index: -1;
+  transform: rotate(10deg);
+  border-top-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+}
+
+#Contact .title-text h1 {
+  font-size: 50px;
+}
+
+#Contact .footer-row {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#Contact .footer-left,
+#Contact .footer-right {
+  flex-basis: 45%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#Contact .footer-right {
+  text-align: right;
+}
+
+#Contact .footer-row h1 {
+  margin: 10px 0;
+}
+
+#Contact .footer-row p {
+  line-height: 35px;
+}
+
+#Contact .social-media {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+#Contact .social-media a {
+  text-decoration: none;
+  color: #d6336c;
+  font-size: 28px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+#Contact .social-media a:hover {
+  color: #8e2c5a;
+  transform: translateY(-4px) scale(1.15);
+}
+
+@media screen and (max-width: 770px) {
+  #Contact .title-text h1 {
+    font-size: 28px;
+  }
+  #Contact .footer-left,
+  #Contact .footer-right {
+    flex-basis: 100%;
+    text-align: center;
+  }
+}

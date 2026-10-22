@@ -1,0 +1,93 @@
+/*-- About page --*/
+#About {
+  width: 100%;
+  padding: 70px 0;
+}
+
+#About .title-text {
+  text-align: center;
+  padding-bottom: 70px;
+}
+
+#About .title-text p {
+  margin: auto;
+  font-size: 30px;
+  color: #FF1493;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+#About .title-text p::after {
+  content: '';
+  width: 50px;
+  height: 35px;
+  background: linear-gradient(#FF69B4, #fff);
+  position: absolute;
+  top: -20px;
+  left: 0;
+  z-index: -1;
+  transform: rotate(10deg);
+  border-top-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+}
+
+#About .title-text h1 {
+  font-size: 50px;
+}
+
+#About .About-box {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+}
+
+#About .About {
+  flex-basis: 50%;
+}
+
+#About .About-img {
+  flex-basis: 50%;
+  margin: auto;
+}
+
+#About .About-img img {
+  width: 80%;
+  border-radius: 10px;
+}
+
+#About .About h1 {
+  text-align: left;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #FF1493;
+}
+
+#About .About-desc {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+#About .About-text p {
+  padding: 0 20px;
+  text-align: initial;
+}
+
+@media screen and (max-width: 770px) {
+  #About .title-text h1 {
+    font-size: 28px;
+  }
+  #About .About,
+  #About .About-img {
+    flex-basis: 100%;
+  }
+  #About .About-img img {
+    width: 100%;
+  }
+}

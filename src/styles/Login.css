@@ -1,0 +1,126 @@
+#Login {
+  width: 100%;
+  min-height: 100vh;
+  padding: 70px 0;
+  background: #efefef;
+}
+
+#Login .title-text {
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+#Login .title-text p {
+  margin: auto;
+  font-size: 30px;
+  color: #FF1493;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+#Login .title-text p::after {
+  content: '';
+  width: 50px;
+  height: 35px;
+  background: linear-gradient(#FF69B4, #fff);
+  position: absolute;
+  top: -20px;
+  left: 0;
+  z-index: -1;
+  transform: rotate(10deg);
+  border-top-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+}
+
+#Login .title-text h1 {
+  font-size: 50px;
+}
+
+#Login .container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#Login .form {
+  display: flex;
+  flex-direction: column;
+  animation: loginFadeIn 0.3s ease-in-out;
+}
+
+@keyframes loginFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#Login h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#Login .input-group {
+  margin-bottom: 15px;
+}
+
+#Login .input-group label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+#Login .input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#Login .btn {
+  background-color: #FF1493;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+#Login .btn:hover {
+  background-color: #FF69B4;
+}
+
+#Login p {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+#Login .form p a {
+  text-decoration: none;
+  color: #d6336c;
+  font-weight: 600;
+}
+
+#Login .form p a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 770px) {
+  #Login .title-text h1 {
+    font-size: 28px;
+  }
+}
