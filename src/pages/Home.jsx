@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import Logo from '../components/Logo';
 import '../styles/style.css';
 
-// 
+
 const slides = ['/images/hp7.jpeg', '/images/hp8.jpeg', '/images/hp9.jpeg', '/images/hp11.jpeg','/images/hp10.jpeg'];
 
 export default function Home() {
