@@ -20,13 +20,36 @@ export default function Order() {
     address: '',
   });
 
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate('/payment', { state: { order: form } });
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError('');
+  setLoading(true);
+
+  try {
+    const res = await fetch('http://localhost:5000/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(form),
+    });
+    const result = await res.json();
+
+    if (!res.ok) {
+      setError(result.message || 'Could not place order');
+    } else {
+      navigate('/payment', { state: { order: { ...form, orderId: result.orderId } } });
+    }
+  } catch (err) {
+    setError('Cannot connect to server. Please try again later.');
+  } finally {
+    setLoading(false);
+  }
+};
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -82,7 +105,10 @@ export default function Order() {
           <label htmlFor="address">Delivery Address:</label>
           <textarea id="address" name="address" rows="3" placeholder="Enter delivery address" value={form.address} onChange={handleChange} required />
 
-          <button type="submit">Continue to Payment</button>
+          {error && <p style={{ color: '#e5127d' }}>{error}</p>}
+          <button type="submit" disabled={loading}>
+            {loading ? 'Please wait...' : 'Continue to Payment'}
+          </button>
         </form>
       </div>
     </section>

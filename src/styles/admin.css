@@ -1,0 +1,100 @@
+#Admin {
+  display: flex;
+  min-height: 100vh;
+  background: #fdf6f9;
+}
+
+#Admin .admin-sidebar {
+  width: 220px;
+  background: linear-gradient(180deg, #e5127d, #ff4e6a);
+  color: #fff;
+  padding: 30px 20px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+#Admin .admin-sidebar h2 {
+  margin-bottom: 30px;
+  font-size: 22px;
+}
+
+#Admin .admin-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+#Admin .admin-sidebar li {
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+#Admin .admin-sidebar li.active,
+#Admin .admin-sidebar li:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#Admin .admin-main {
+  flex: 1;
+  padding: 30px;
+  overflow-x: auto;
+}
+
+#Admin .admin-count {
+  color: #666;
+  margin-bottom: 16px;
+}
+
+#Admin .admin-error {
+  color: #e5127d;
+}
+
+#Admin .table-wrap {
+  overflow-x: auto;
+}
+
+#Admin table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#Admin th,
+#Admin td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+#Admin th {
+  background: #fbe3ee;
+}
+
+#Admin .del-btn {
+  background: #e5127d;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media (max-width: 770px) {
+  #Admin {
+    flex-direction: column;
+  }
+  #Admin .admin-sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+  #Admin .admin-sidebar ul {
+    display: flex;
+    gap: 8px;
+  }
+}

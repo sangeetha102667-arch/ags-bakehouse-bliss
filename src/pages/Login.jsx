@@ -1,12 +1,46 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/login.css';
+
+const API = 'http://localhost:5000/api/auth';
 
 export default function Login() {
   const [mode, setMode] = useState('login');
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // backend connect pannum bodhu inga API call varum
+    setMessage('');
+    setLoading(true);
+
+    const data = Object.fromEntries(new FormData(e.target));
+    const url = mode === 'login' ? `${API}/login` : `${API}/register`;
+
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+
+      if (!res.ok) {
+        setMessage(result.message || 'Something went wrong');
+      } else if (mode === 'register') {
+        setMessage('Registered successfully! Please login.');
+        setMode('login');
+      } else {
+        localStorage.setItem('token', result.token);
+        localStorage.setItem('user', JSON.stringify(result.user));
+        navigate('/');
+      }
+    } catch (err) {
+      setMessage('Cannot connect to server. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -28,10 +62,13 @@ export default function Login() {
               <label htmlFor="login-password">Password</label>
               <input type="password" id="login-password" name="password" required />
             </div>
-            <button className="btn" type="submit">Login</button>
+            {message && <p style={{ color: '#e5127d' }}>{message}</p>}
+            <button className="btn" type="submit" disabled={loading}>
+              {loading ? 'Please wait...' : 'Login'}
+            </button>
             <p>
               Don't have an account?{' '}
-              <a href="#" onClick={(e) => { e.preventDefault(); setMode('register'); }}>
+              <a href="#" onClick={(e) => { e.preventDefault(); setMessage(''); setMode('register'); }}>
                 Register
               </a>
             </p>
@@ -49,12 +86,15 @@ export default function Login() {
             </div>
             <div className="input-group">
               <label htmlFor="register-password">Password</label>
-              <input type="password" id="register-password" name="password" required />
+              <input type="password" id="register-password" name="password" required minLength={6} />
             </div>
-            <button className="btn" type="submit">Register</button>
+            {message && <p style={{ color: '#e5127d' }}>{message}</p>}
+            <button className="btn" type="submit" disabled={loading}>
+              {loading ? 'Please wait...' : 'Register'}
+            </button>
             <p>
               Already have an account?{' '}
-              <a href="#" onClick={(e) => { e.preventDefault(); setMode('login'); }}>
+              <a href="#" onClick={(e) => { e.preventDefault(); setMessage(''); setMode('login'); }}>
                 Login
               </a>
             </p>
