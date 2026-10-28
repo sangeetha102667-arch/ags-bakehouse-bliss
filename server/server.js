@@ -9,6 +9,8 @@ app.use(express.json());
 
 app.get("/", (req, res) => res.send("AGS Bakehouse API running"));
 
+app.use("/api/auth", require("./routes/auth"));
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
