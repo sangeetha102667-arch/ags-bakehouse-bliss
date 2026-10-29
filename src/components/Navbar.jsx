@@ -6,7 +6,7 @@ export default function Navbar() {
   const { pathname } = useLocation();
 
   // Login / Register page-la sidebar vendaam
-  if (pathname === '/login' || pathname === '/register') return null;
+  if (pathname === '/login' || pathname === '/register' || pathname === '/admin') return null;
 
   // Dashboard-la sidebar left side-la
   const isDash = pathname.startsWith('/dashboard');
