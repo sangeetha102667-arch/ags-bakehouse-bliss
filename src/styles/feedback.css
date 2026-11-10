@@ -138,3 +138,24 @@
     font-size: 28px;
   }
 }
+
+#Feedback .fb-title p {
+  margin: auto;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+#Feedback .fb-title p::after {
+  content: '';
+  width: 50px;
+  height: 35px;
+  background: linear-gradient(#FF69B4, #fff);
+  position: absolute;
+  top: -20px;
+  left: 0;
+  z-index: -1;
+  transform: rotate(10deg);
+  border-top-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+}

@@ -15,6 +15,7 @@ app.use("/api/orders", require("./routes/orders"));
 app.use("/api/users", require("./routes/users"));
 app.use("/api/cakes", require("./routes/cakes"));
 app.use("/api/feedback", require("./routes/feedback"));
+app.use("/api/favourites", require("./routes/favourites"));
 
 mongoose
   .connect(process.env.MONGO_URI)

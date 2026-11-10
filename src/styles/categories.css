@@ -120,6 +120,35 @@
   font-size: 14px;
 }
 
+/*-- Favourite heart button --*/
+#Categories .fav-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #FF1493;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#Categories .fav-btn:hover {
+  transform: scale(1.12);
+}
+
+#Categories .fav-btn.on {
+  background: #FF1493;
+  color: #fff;
+}
+
 /*-- Similar grid --*/
 #Similar .similar-grid {
   width: 80%;
@@ -130,7 +159,9 @@
 }
 
 #Similar .similar-item {
+  display: block;
   text-align: center;
+  text-decoration: none;
 }
 
 #Similar .image-link {
@@ -152,42 +183,6 @@
   margin-top: 8px;
   font-size: 14px;
   color: #444;
-}
-
-/*-- Mobile --*/
-@media screen and (max-width: 770px) {
-  #Categories .title-text h1,
-  #Similar .title-text h1 {
-    font-size: 28px;
-  }
-  #Categories .Categories-box {
-    grid-template-columns: 1fr;
-    width: 90%;
-  }
-  #Categories .single-service:hover .service-desc,
-  #Categories .single-service.active .service-desc {
-    bottom: 25%;
-  }
-  #Categories .service-desc p {
-    font-size: 12px;
-  }
-  #Categories hr {
-    margin: 5px auto;
-  }
-  #Similar .similar-grid {
-    width: 90%;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-  #Similar .image-link {
-    height: 130px;
-  }
-}
-
-
-#Similar .similar-item {
-  display: block;
-  text-decoration: none;
 }
 
 /*-- Gallery --*/
@@ -270,7 +265,34 @@
   text-decoration: underline;
 }
 
+/*-- Mobile --*/
 @media screen and (max-width: 770px) {
+  #Categories .title-text h1,
+  #Similar .title-text h1 {
+    font-size: 28px;
+  }
+  #Categories .Categories-box {
+    grid-template-columns: 1fr;
+    width: 90%;
+  }
+  #Categories .single-service:hover .service-desc,
+  #Categories .single-service.active .service-desc {
+    bottom: 25%;
+  }
+  #Categories .service-desc p {
+    font-size: 12px;
+  }
+  #Categories hr {
+    margin: 5px auto;
+  }
+  #Similar .similar-grid {
+    width: 90%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  #Similar .image-link {
+    height: 130px;
+  }
   #Gallery .title-text h1 {
     font-size: 26px;
   }

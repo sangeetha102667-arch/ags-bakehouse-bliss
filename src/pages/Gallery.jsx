@@ -1,17 +1,35 @@
 import { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import gsap from 'gsap';
-import { cakes } from '../data/cakes';
+import { cakes as oldCakes } from '../data/cakes';
 import { gallery } from '../data/gallery';
+import { useCakes } from '../hooks/useCakes';
 import '../styles/categories.css';
+
+// gallery.js number id-la irukku, adhai cake peyar-oda match pannurom
+const photosByName = {};
+Object.keys(gallery).forEach((key) => {
+  const old = oldCakes.find((c) => c.id === Number(key));
+  if (old) photosByName[old.name] = gallery[key];
+});
 
 export default function Gallery() {
   const { id } = useParams();
   const root = useRef(null);
-  const cake = cakes.find((c) => c.id === Number(id));
-  const photos = gallery[id] || [];
+  const { cakes, loading } = useCakes();
+  const cake = cakes.find((c) => c.id === id);
+
+  let photos = [];
+  if (cake) {
+    if (photosByName[cake.name]) {
+      photos = photosByName[cake.name].map((f) => `/images/${f}`);
+    } else if (cake.img) {
+      photos = [cake.img];
+    }
+  }
 
   useEffect(() => {
+    if (loading || !cake) return;
     const ctx = gsap.context(() => {
       gsap.from('.title-text', { y: 40, opacity: 0, duration: 0.9 });
       gsap.from('.gallery-item', {
@@ -23,7 +41,17 @@ export default function Gallery() {
       });
     }, root);
     return () => ctx.revert();
-  }, [id]);
+  }, [id, loading, cake?.id]);
+
+  if (loading) {
+    return (
+      <section id="Gallery">
+        <div className="title-text">
+          <h1>Loading...</h1>
+        </div>
+      </section>
+    );
+  }
 
   if (!cake) {
     return (
@@ -44,9 +72,9 @@ export default function Gallery() {
       </div>
 
       <div className="gallery-grid">
-        {photos.map((file) => (
-          <div className="gallery-item" key={file}>
-            <img src={`/images/${file}`} alt={cake.name} />
+        {photos.map((src) => (
+          <div className="gallery-item" key={src}>
+            <img src={src} alt={cake.name} />
           </div>
         ))}
       </div>

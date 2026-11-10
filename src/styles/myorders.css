@@ -143,3 +143,24 @@
     font-size: 28px;
   }
 }
+
+#MyOrders .mo-title p {
+  margin: auto;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+#MyOrders .mo-title p::after {
+  content: '';
+  width: 50px;
+  height: 35px;
+  background: linear-gradient(#FF69B4, #fff);
+  position: absolute;
+  top: -20px;
+  left: 0;
+  z-index: -1;
+  transform: rotate(10deg);
+  border-top-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+}

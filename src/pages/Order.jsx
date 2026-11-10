@@ -1,19 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
-import { cakes } from '../data/cakes';
+import { useCakes } from '../hooks/useCakes';
 import '../styles/order.css';
 
 export default function Order() {
   const root = useRef(null);
   const navigate = useNavigate();
   const today = new Date().toISOString().split('T')[0];
+  const { cakes, loading: cakesLoading } = useCakes();
+  const availableCakes = cakes.filter((c) => c.available);
 
   const [form, setForm] = useState({
     name: '',
     email: '',
     phone: '',
-    cakeType: cakes[0].name,
+    cakeType: '',
     size: 'medium',
     message: '',
     deliveryDate: '',
@@ -22,6 +24,14 @@ export default function Order() {
 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (cakesLoading) return;
+    setForm((f) =>
+      f.cakeType ? f : { ...f, cakeType: availableCakes[0]?.name || 'Custom Design' }
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cakesLoading]);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -87,7 +97,10 @@ export default function Order() {
 
           <label htmlFor="cakeType">Select Cake Type:</label>
           <select id="cakeType" name="cakeType" value={form.cakeType} onChange={handleChange} required>
-            {cakes.map((c) => (
+            <option value="" disabled>
+              {cakesLoading ? 'Loading cakes...' : 'Select a cake'}
+            </option>
+            {availableCakes.map((c) => (
               <option key={c.id} value={c.name}>{c.name}</option>
             ))}
             <option value="Custom Design">Custom Design</option>

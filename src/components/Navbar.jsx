@@ -42,6 +42,7 @@ export default function Navbar() {
             <li><Link to="/similar" onClick={() => setOpen(false)}>Similar Categories</Link></li>
             <li><Link to="/order" onClick={() => setOpen(false)}>Order Details</Link></li>
             <li><Link to="/my-orders" onClick={() => setOpen(false)}>My Orders</Link></li>
+            <li><Link to="/favourites" onClick={() => setOpen(false)}>Favourites</Link></li>
             <li><Link to="/feedback" onClick={() => setOpen(false)}>Feedback</Link></li>
             <li><Link to="/payment" onClick={() => setOpen(false)}>Payment</Link></li>
             <li><Link to="/contact" onClick={() => setOpen(false)}>Contact</Link></li>

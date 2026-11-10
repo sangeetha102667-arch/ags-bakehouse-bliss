@@ -15,6 +15,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
 import MyOrders from './pages/MyOrders';
 import Feedback from './pages/Feedback';
+import Favourites from './pages/Favourites';
 
 export default function App() {
   return (
@@ -35,6 +36,8 @@ export default function App() {
         <Route path="/payment" element={<ProtectedRoute><Payment /></ProtectedRoute>} />
         <Route path="/my-orders" element={<ProtectedRoute><MyOrders /></ProtectedRoute>} />
         <Route path="/feedback" element={<ProtectedRoute><Feedback /></ProtectedRoute>} />
+        <Route path="/favourites" element={<ProtectedRoute><Favourites /></ProtectedRoute>} />
+        
 
         {/* Admin only */}
         <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />

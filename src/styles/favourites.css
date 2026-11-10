@@ -1,0 +1,135 @@
+#Favourites {
+  width: 100%;
+  min-height: 100vh;
+  padding: 70px 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.15), #FFB6C1);
+}
+
+#Favourites .fv-title {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+#Favourites .fv-title p {
+  font-size: 30px;
+  color: #FF1493;
+  font-weight: bold;
+}
+
+#Favourites .fv-title h1 {
+  font-size: 44px;
+}
+
+#Favourites .fv-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+#Favourites .fv-note,
+#Favourites .fv-error {
+  text-align: center;
+}
+
+#Favourites .fv-error {
+  color: #d6336c;
+}
+
+#Favourites .fv-note a {
+  color: #d6336c;
+  font-weight: 600;
+}
+
+#Favourites .fv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+#Favourites .fv-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
+}
+
+#Favourites .fv-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+#Favourites .fv-body {
+  padding: 14px;
+}
+
+#Favourites .fv-body h3 {
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+#Favourites .fv-price {
+  color: #d6336c;
+  font-weight: 600;
+}
+
+#Favourites .fv-na {
+  color: #888;
+  font-size: 13px;
+}
+
+#Favourites .fv-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+#Favourites .fv-order {
+  background: #FF1493;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+#Favourites .fv-order:hover {
+  background: #d6336c;
+}
+
+#Favourites .fv-remove {
+  background: none;
+  border: none;
+  color: #FF1493;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 770px) {
+  #Favourites .fv-title h1 {
+    font-size: 28px;
+  }
+}
+
+#Favourites .fv-title p {
+  margin: auto;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+}
+
+#Favourites .fv-title p::after {
+  content: '';
+  width: 50px;
+  height: 35px;
+  background: linear-gradient(#FF69B4, #fff);
+  position: absolute;
+  top: -20px;
+  left: 0;
+  z-index: -1;
+  transform: rotate(10deg);
+  border-top-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+}
