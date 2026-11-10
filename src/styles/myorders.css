@@ -1,0 +1,145 @@
+#MyOrders {
+  width: 100%;
+  min-height: 100vh;
+  padding: 70px 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.15), #FFB6C1);
+}
+
+#MyOrders .mo-title {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+#MyOrders .mo-title p {
+  font-size: 30px;
+  color: #FF1493;
+  font-weight: bold;
+}
+
+#MyOrders .mo-title h1 {
+  font-size: 44px;
+}
+
+#MyOrders .mo-wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+#MyOrders .mo-note,
+#MyOrders .mo-error {
+  text-align: center;
+  font-size: 16px;
+}
+
+#MyOrders .mo-error {
+  color: #d6336c;
+}
+
+#MyOrders .mo-note a {
+  color: #d6336c;
+  font-weight: 600;
+}
+
+#MyOrders .mo-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
+}
+
+#MyOrders .mo-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#MyOrders .mo-card p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+#MyOrders .mo-badge {
+  background: #fff0f6;
+  color: #FF1493;
+  border: 1px solid #FF1493;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#MyOrders .mo-badge.cancelled {
+  background: #f1f1f1;
+  color: #777;
+  border-color: #bbb;
+}
+
+#MyOrders .mo-cancel {
+  margin-top: 14px !important;
+  color: #777;
+}
+
+#MyOrders .mo-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#MyOrders .mo-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+#MyOrders .mo-step::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: -50%;
+  width: 100%;
+  height: 3px;
+  background: #ddd;
+  z-index: 0;
+}
+
+#MyOrders .mo-step:first-child::before {
+  display: none;
+}
+
+#MyOrders .mo-step.done::before {
+  background: #FF1493;
+}
+
+#MyOrders .mo-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ddd;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+#MyOrders .mo-step.done .mo-dot {
+  background: #FF1493;
+}
+
+#MyOrders .mo-label {
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+@media screen and (max-width: 770px) {
+  #MyOrders .mo-title h1 {
+    font-size: 28px;
+  }
+}

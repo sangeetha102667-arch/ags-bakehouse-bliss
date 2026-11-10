@@ -12,6 +12,8 @@
   position: sticky;
   top: 0;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 #Admin .admin-sidebar h2 {
@@ -34,6 +36,39 @@
 #Admin .admin-sidebar li.active,
 #Admin .admin-sidebar li:hover {
   background: rgba(255, 255, 255, 0.2);
+}
+
+#Admin .admin-actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#Admin .side-btn {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#Admin .side-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#Admin .side-btn.logout {
+  background: #fff;
+  color: #e5127d;
+  font-weight: 600;
+}
+
+#Admin .side-btn.logout:hover {
+  background: #ffe3ef;
 }
 
 #Admin .admin-main {
@@ -97,4 +132,51 @@
     display: flex;
     gap: 8px;
   }
+  #Admin .admin-actions {
+    margin-top: 16px;
+    flex-direction: row;
+  }
 }
+
+#Admin .cake-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#Admin .cake-form input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+#Admin .add-btn {
+  background: #e5127d;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#Admin .avail-btn {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #fff;
+}
+
+#Admin .avail-btn.on {
+  background: #2e9e5b;
+}
+
+#Admin .avail-btn.off {
+  background: #999;
+}
+
+

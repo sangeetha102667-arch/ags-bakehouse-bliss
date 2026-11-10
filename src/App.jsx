@@ -10,23 +10,36 @@ import Order from './pages/Order';
 import Payment from './pages/Payment';
 import Contact from './pages/Contact';
 import Admin from './pages/Admin';
+import AdminRoute from './components/AdminRoute';
+import ProtectedRoute from './components/ProtectedRoute';
+import Footer from './components/Footer';
+import MyOrders from './pages/MyOrders';
+import Feedback from './pages/Feedback';
 
 export default function App() {
   return (
     <>
       <Navbar />
       <Routes>
+        {/* Public pages */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/similar" element={<Similar />} />
-        <Route path="/similar/:id" element={<Gallery />} />
-        <Route path="/order" element={<Order />} />
-        <Route path="/payment" element={<Payment />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/login" element={<Login />} />
+
+        {/* Login required */}
+        <Route path="/categories" element={<ProtectedRoute><Categories /></ProtectedRoute>} />
+        <Route path="/similar" element={<ProtectedRoute><Similar /></ProtectedRoute>} />
+        <Route path="/similar/:id" element={<ProtectedRoute><Gallery /></ProtectedRoute>} />
+        <Route path="/order" element={<ProtectedRoute><Order /></ProtectedRoute>} />
+        <Route path="/payment" element={<ProtectedRoute><Payment /></ProtectedRoute>} />
+        <Route path="/my-orders" element={<ProtectedRoute><MyOrders /></ProtectedRoute>} />
+        <Route path="/feedback" element={<ProtectedRoute><Feedback /></ProtectedRoute>} />
+
+        {/* Admin only */}
+        <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
       </Routes>
+      <Footer />
     </>
   );
 }

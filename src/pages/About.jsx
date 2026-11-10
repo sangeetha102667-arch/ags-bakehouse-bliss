@@ -52,7 +52,7 @@ useEffect(() => {
             <div className="About-text">
               <p>
                 At AGS Bakehouse Bliss, we believe that every celebration deserves a
-                delicious centerpiece. Founded in 2024, our passion for baking began in ssS.
+                delicious centerpiece. Founded in 2026, our passion for baking began in ssS.
                 From humble beginnings in our home kitchen, we've grown into a dedicated team of
                 cake artists committed to crafting unforgettable desserts.
               </p>

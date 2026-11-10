@@ -27,29 +27,33 @@ export default function Order() {
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  setError('');
-  setLoading(true);
+    e.preventDefault();
+    setError('');
+    setLoading(true);
 
-  try {
-    const res = await fetch('http://localhost:5000/api/orders', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    });
-    const result = await res.json();
+    try {
+      const token = localStorage.getItem('token');
+      const res = await fetch('http://localhost:5000/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify(form),
+      });
+      const result = await res.json();
 
-    if (!res.ok) {
-      setError(result.message || 'Could not place order');
-    } else {
-      navigate('/payment', { state: { order: { ...form, orderId: result.orderId } } });
+      if (!res.ok) {
+        setError(result.message || 'Could not place order');
+      } else {
+        navigate('/payment', { state: { order: { ...form, orderId: result.orderId } } });
+      }
+    } catch (err) {
+      setError('Cannot connect to server. Please try again later.');
+    } finally {
+      setLoading(false);
     }
-  } catch (err) {
-    setError('Cannot connect to server. Please try again later.');
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {

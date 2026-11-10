@@ -180,8 +180,10 @@
   background: #d6336c;
 }
 
+/* Thank You card (centered) */
 #Payment .pay-done {
   text-align: center;
+  max-width: 500px;
 }
 
 #Payment .pay-done h2 {

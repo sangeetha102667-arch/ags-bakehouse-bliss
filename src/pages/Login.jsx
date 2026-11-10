@@ -34,7 +34,7 @@ export default function Login() {
       } else {
         localStorage.setItem('token', result.token);
         localStorage.setItem('user', JSON.stringify(result.user));
-        navigate('/');
+        navigate(result.user.role === 'admin' ? '/admin' : '/');
       }
     } catch (err) {
       setMessage('Cannot connect to server. Please try again later.');

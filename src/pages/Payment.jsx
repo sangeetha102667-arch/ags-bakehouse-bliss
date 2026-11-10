@@ -7,14 +7,40 @@ export default function Payment() {
   const root = useRef(null);
   const { state } = useLocation();
   const order = state?.order;
+  const orderId = state?.order?.orderId;
 
   const [method, setMethod] = useState('cod');
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // backend connect pannum bodhu inga API call varum
-    setDone(true);
+    setError('');
+
+    if (!orderId) {
+      setError('No order found. Please place your order first.');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await fetch(`http://localhost:5000/api/orders/${orderId}/payment`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ paymentMethod: method }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.message || 'Could not save payment.');
+      } else {
+        setDone(true);
+      }
+    } catch {
+      setError('Cannot connect to server. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -32,12 +58,15 @@ export default function Payment() {
           <p>Payment</p>
           <h1>Thank You!</h1>
         </div>
-        <div className="pay-form pay-done">
-          <h2>Order placed successfully</h2>
-          <p>
-            Payment method: <b>{method === 'cod' ? 'Cash on Delivery' : 'Bank Transfer'}</b>
-          </p>
-          <Link to="/" className="pay-link">Back to Home</Link>
+
+        <div className="pay-wrap">
+          <div className="pay-form pay-done">
+            <h2>Order placed successfully</h2>
+            <p>
+              Payment method: <b>{method === 'cod' ? 'Cash on Delivery' : 'Bank Transfer'}</b>
+            </p>
+            <Link to="/" className="pay-link">Back to Home</Link>
+          </div>
         </div>
       </section>
     );
@@ -62,7 +91,7 @@ export default function Payment() {
             </div>
           ) : (
             <p className="pay-note">
-             No Order details. <Link to="/order">Go To THe Order page.</Link>.
+              No order details. <Link to="/order">Go to the Order page.</Link>
             </p>
           )}
 
@@ -124,7 +153,11 @@ export default function Payment() {
             </div>
           </div>
 
-          <button type="submit" className="pay-btn">Place Order</button>
+          {error && <p style={{ color: '#d6336c', marginTop: '12px' }}>{error}</p>}
+
+          <button type="submit" className="pay-btn" disabled={loading}>
+            {loading ? 'Saving...' : 'Place Order'}
+          </button>
         </form>
       </div>
     </section>

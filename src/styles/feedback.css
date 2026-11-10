@@ -1,0 +1,140 @@
+#Feedback {
+  width: 100%;
+  min-height: 100vh;
+  padding: 70px 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.15), #FFB6C1);
+}
+
+#Feedback .fb-title {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+#Feedback .fb-title p {
+  font-size: 30px;
+  color: #FF1493;
+  font-weight: bold;
+}
+
+#Feedback .fb-title h1 {
+  font-size: 44px;
+}
+
+#Feedback .fb-wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+#Feedback .fb-form,
+#Feedback .fb-list {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
+}
+
+#Feedback h3 {
+  font-size: 16px;
+  color: #333;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+#Feedback .fb-stars {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+#Feedback .fb-stars button {
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #ccc;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#Feedback .fb-stars button.on {
+  color: #FF1493;
+}
+
+#Feedback textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+#Feedback textarea:focus {
+  outline: none;
+  border-color: #FF1493;
+}
+
+#Feedback .fb-error {
+  color: #d6336c;
+  margin-top: 10px;
+}
+
+#Feedback .fb-success {
+  color: #2e9e5b;
+  margin-top: 10px;
+}
+
+#Feedback .fb-btn {
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px;
+  font-size: 17px;
+  background: #FF1493;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#Feedback .fb-btn:hover {
+  background: #d6336c;
+}
+
+#Feedback .fb-card {
+  border-bottom: 1px solid #eee;
+  padding: 14px 0;
+}
+
+#Feedback .fb-card:last-child {
+  border-bottom: none;
+}
+
+#Feedback .fb-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+#Feedback .fb-rate {
+  color: #FF1493;
+  letter-spacing: 2px;
+}
+
+#Feedback .fb-card p {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+#Feedback .fb-card small,
+#Feedback .fb-note {
+  color: #888;
+}
+
+@media screen and (max-width: 770px) {
+  #Feedback .fb-title h1 {
+    font-size: 28px;
+  }
+}
